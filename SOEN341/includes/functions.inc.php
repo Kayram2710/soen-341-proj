@@ -7,7 +7,6 @@ function emptyInputSignup($fName, $lName, $email, $pwd, $pwdRepeat){
 	}else{
 		$result = false;
 	}
-	echo $result;
 	return $result;
 }
 
@@ -75,4 +74,41 @@ function createUser($conn, $fName, $lName, $email, $pwd){
 
 	header("location: ../signup.php?error=none");
 	exit();
+}
+
+function emptyInputLogin($email, $pwd){
+	$result;
+	if(empty($email) || empty($pwd)){
+		$result = true;
+	}else{
+		$result = false;
+	}
+	return $result;
+}
+
+function loginUser($conn, $identifier, $pwd){
+
+	$emailTakenVar = emailTaken($conn, $identifier);
+
+	if($emailTakenVar === false){
+		header("location: ../login.php?error=wronglogin");
+		exit();
+	}
+
+	$pwdHashed = $emailTakenVar["password"];
+	$checkpwd = password_verify($pwd, $pwdHashed);
+
+	if($checkpwd === false){
+		header("location: ../login.php?error=wrongpwd");
+		exit();
+
+	}else if($checkpwd === true){
+		session_start();
+		$_SESSION["userID"] = $emailTakenVar["userID"];
+		$_SESSION['userFName'] = $emailTakenVar["fName"];
+		$_SESSION['userLName'] = $emailTakenVar["lName"];
+		$_SESSION['userEmail'] = $emailTakenVar["email"];
+		header("location: ../index.php");
+		exit();
+	}
 }
