@@ -34,6 +34,8 @@
 			<input type="text" name="email" placeholder="Your email...">
 			<input type="password" name="pwd" placeholder="Your password...">
 			<input type="password" name="pwdRepeat" placeholder="Confirm password...">
+			<br> Are you a supplier? 
+			<input type="checkbox" name="role"><br>
 			<button type="submit" name="submit">Sign up!</button>
 		</form>
 	</section>

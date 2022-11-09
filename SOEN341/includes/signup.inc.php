@@ -5,8 +5,10 @@ if(isset($_POST["submit"])){
 	$fName = $_POST["fName"];
 	$lName = $_POST["lName"];
 	$email = $_POST["email"];
+	$role_bool = $_POST["role"];
 	$pwd = $_POST["pwd"];
 	$pwdRepeat = $_POST["pwdRepeat"];
+	$role = "client";
 
 	require_once 'dbh.inc.php';
 	require_once 'functions.inc.php';
@@ -31,7 +33,11 @@ if(isset($_POST["submit"])){
 		exit();
 	}
 
-	//createUser($conn, $fName, $lName, $email, $pwd);
+	if($role_bool == true){
+		$role = "supplier";
+	}
+
+	createUser($conn, $fName, $lName, $email, $role, $pwd);
 
 }else{
 	header("location: ../signup.php");
