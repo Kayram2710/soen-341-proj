@@ -6,12 +6,12 @@
 		if (($_SESSION['userRole']) == "supplier"){
 			header("location: ./supplier.php");
 		} elseif (($_SESSION['userRole']) == "client"){
-			header("location: ./client.php");		
+			header("location: ./client.php");	
+		}
 	}
-
-}
-
 ?>
+
+
 	<section>
 		<h2>For Testing purposes only</h2>
 			<?php 
