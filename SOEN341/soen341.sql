@@ -84,6 +84,7 @@ CREATE TABLE `user` (
   `fName` varchar(50) NOT NULL,
   `lName` varchar(50) NOT NULL,
   `email` varchar(75) NOT NULL,
+  `role` varchar(75) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -91,8 +92,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `fName`, `lName`, `email`, `password`) VALUES
-(1, 'Badmin', 'Ton', 'admin@admin.com', '$2y$10$PLaC1MzFdxvD.0QEyJ01yenQh3HCv/Dzvzmcx6.uj7oZP2h73Q7w.');
+INSERT INTO `user` (`userID`, `fName`, `lName`, `email` , `role`, `password`) VALUES
+(1, 'Badmin', 'Ton', 'admin@admin.com', 'supplier', '$2y$10$PLaC1MzFdxvD.0QEyJ01yenQh3HCv/Dzvzmcx6.uj7oZP2h73Q7w.');
 
 --
 -- Indexes for dumped tables
