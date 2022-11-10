@@ -8,13 +8,14 @@
 		} elseif (($_SESSION['userRole']) == "client"){
 			header("location: ./client.php");	
 		}
+    
 	}
 
 ?>
 
 <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
-  <body>
+<body>
     <div class="container" id="container">
       
       <!-- Sign Up Container DIV-->
@@ -138,7 +139,7 @@
       });
     </script>
 
-  </body>
+</body>
 </html>
 
 <?php 

@@ -104,7 +104,7 @@ function loginUser($conn, $identifier, $pwd){
 
 	}else if($checkpwd === true){
 		session_start();
-		$_SESSION["userID"] = $emailTakenVar["userID"];
+		$_SESSION['userID'] = $emailTakenVar["userID"];
 		$_SESSION['userFName'] = $emailTakenVar["fName"];
 		$_SESSION['userLName'] = $emailTakenVar["lName"];
 		$_SESSION['userEmail'] = $emailTakenVar["email"];
