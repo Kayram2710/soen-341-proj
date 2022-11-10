@@ -14,22 +14,22 @@ if(isset($_POST["submit"])){
 	require_once 'functions.inc.php';
 
 	if(emptyInputSignup($fName, $lName, $email, $pwd, $pwdRepeat) !== false){
-		header("location: ../account.php?error=emptyinput");
+		header("location: ../signup.php?error=emptyinput");
 		exit();
 	}
 
 	if(invalidEmail($email) != false){
-		header("location: ../account.php?error=invalidemail");
+		header("location: ../signup.php?error=invalidemail");
 		exit();
 	}
 
 	if(emailTaken($conn, $email) != false){
-		header("location: ../account.php?error=emailistaken");
+		header("location: ../signup.php?error=emailistaken");
 		exit();
 	}
 
 	if(pwdMatch($pwd, $pwdRepeat) != false){
-		header("location: ../account.php?error=pwdnomatch");
+		header("location: ../signup.php?error=pwdnomatch");
 		exit();
 	}
 
@@ -40,8 +40,6 @@ if(isset($_POST["submit"])){
 	createUser($conn, $fName, $lName, $email, $role, $pwd);
 
 }else{
-	header("location: ../account.php");
+	header("location: ../signup.php");
 	exit();
 }
-
-?>
