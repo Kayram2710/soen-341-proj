@@ -72,7 +72,7 @@ function createUser($conn, $fName, $lName, $email, $role, $pwd){
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 
-	header("location: ../account.php?error=none");
+	header("location: ./account.php?error=none");
 	exit();
 }
 
@@ -104,7 +104,7 @@ function loginUser($conn, $identifier, $pwd){
 
 	}else if($checkpwd === true){
 		session_start();
-		$_SESSION["userID"] = $emailTakenVar["userID"];
+		$_SESSION['userID'] = $emailTakenVar["userID"];
 		$_SESSION['userFName'] = $emailTakenVar["fName"];
 		$_SESSION['userLName'] = $emailTakenVar["lName"];
 		$_SESSION['userEmail'] = $emailTakenVar["email"];
