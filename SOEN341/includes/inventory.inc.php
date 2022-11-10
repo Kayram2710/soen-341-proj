@@ -2,10 +2,18 @@
 
 require_once 'dbh.inc.php';
 
+//when session is set
 if(isset($_SESSION['userID'])){
-    
+    $value = $_SESSION['userID'];
+    $sql = "SELECT * FROM inventory WHERE itemOwnerID = '$value'";
+
+    //retrieve array of lists
+    $result = mysqli_query($conn, $sql);
+    $listings = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
 }
 
+//when posted
 if(isset($_POST['submit'])){
 
     //print_r($_SESSION);
@@ -13,6 +21,7 @@ if(isset($_POST['submit'])){
     $titleErr = $descErr = $priceErr = $quantErr = "";
     $title = $description = $price = $quantity = "";
 
+    //Error handling of passed values
     if(empty($_POST['name'])){
         $titleErr = "You must give this listing a title";
     } else {
@@ -41,14 +50,14 @@ if(isset($_POST['submit'])){
         $quantity = filter_input(INPUT_POST, 'quantity', FILTER_SANITIZE_NUMBER_INT);
     }
 
+    //defining userID
     $userID = $_SESSION["userID"];
 
-    //echo "Title: $title, Desc: $description, Price: $$price, Quantity: $quantity";
+    //if all passes run addtoinventory
     if(empty($titleErr) && empty($descErr) && empty($priceErr) && empty($quantErr)){
 
-        echo "ran!";
         addToInventory($conn, $title, $description, $price, $quantity, $userID);
-        
+    
     }
 }
 

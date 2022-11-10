@@ -15,16 +15,28 @@
     <h3><?php echo "Hello, " .  $_SESSION["userFName"] . "."; ?></h3>
     <div class="container-fluid">
         
+    <!-- List of listed products-->
         Here is a list of your listed products:<br>
         <?php 
             if(isset($_GET['success'])){
                 echo "<h5 style=\"color:MediumSeaGreen;\">New item succefuly added!</h5>";
             }
-            
-            //echo " Product";
-        
         ?>
 
+        <!-- Display loop-->
+        <div class="container-fluid mt-4 p-4 bg-white rounded-2 border">
+            <?php if(empty($listings)): ?>
+                <div class="card">
+                    <div class="card-body bg-light">No Listings Yet...</div>
+                </div>
+                
+            <?php endif; foreach($listings as $entry): ?>
+            
+                <!-- echo $entry['itemName'] . "<br>" -->
+            <?php endforeach?>
+        </div>
+
+        <!-- New Product Form-->
         <br> List new product:
         <a class="ms-4 w-25 btn bg-info rounded-2 border-dark" data-bs-toggle="collapse" href="#openForm">Create Listing</a>
         <div id="openForm" class="collapse" >
