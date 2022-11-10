@@ -7,5 +7,6 @@
     } elseif (($_SESSION['userRole']) == "supplier"){
         header("location: ./supplier.php");
     }
+    
 ?>
 

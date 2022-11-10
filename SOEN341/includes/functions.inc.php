@@ -36,7 +36,7 @@ function emailTaken($conn, $email){
 	$stmt = mysqli_stmt_init($conn);
 
 	if(!mysqli_stmt_prepare($stmt, $sql)){
-		header("location: ../signup.php?error=stmtfailed");
+		header("location: ../account.php?error=stmtfailed");
 		exit();
 	}
 
@@ -62,7 +62,7 @@ function createUser($conn, $fName, $lName, $email, $role, $pwd){
 	$stmt = mysqli_stmt_init($conn);
 
 	if(!mysqli_stmt_prepare($stmt, $sql)){
-		header("location: ../signup.php?error=stmtfailed");
+		header("location: ../account.php?error=stmtfailed");
 		exit();
 	}
 
@@ -72,7 +72,7 @@ function createUser($conn, $fName, $lName, $email, $role, $pwd){
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 
-	header("location: ../signup.php?error=none");
+	header("location: ../account.php?error=none");
 	exit();
 }
 
@@ -91,7 +91,7 @@ function loginUser($conn, $identifier, $pwd){
 	$emailTakenVar = emailTaken($conn, $identifier);
 
 	if($emailTakenVar === false){
-		header("location: ../login.php?error=wronglogin");
+		header("location: ../account.php?error=wronglogin");
 		exit();
 	}
 
@@ -99,7 +99,7 @@ function loginUser($conn, $identifier, $pwd){
 	$checkpwd = password_verify($pwd, $pwdHashed);
 
 	if($checkpwd === false){
-		header("location: ../login.php?error=wrongpwd");
+		header("location: ../account.php?error=wrongpwd");
 		exit();
 
 	}else if($checkpwd === true){
@@ -122,3 +122,5 @@ function loginUser($conn, $identifier, $pwd){
 		exit();
 	}
 }
+
+?>
