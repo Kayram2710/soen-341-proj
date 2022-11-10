@@ -29,10 +29,20 @@
                 <div class="card">
                     <div class="card-body bg-light">No Listings Yet...</div>
                 </div>
+                <div class="card">
+                    <a class="card-body bg-light" href="#">+ Add A Listing</a>
+                </div>
                 
             <?php endif; foreach($listings as $entry): ?>
-            
-                <!-- echo $entry['itemName'] . "<br>" -->
+                
+                <div class="card bg-light mb-2">
+                    <h5 class="card-header"><?php echo $entry['itemName'] ?></h5>
+                    <div class="card-body"><?php echo $entry['itemDesc'] ?></div>
+                    <div class="card-body"><?php echo "Price :$" . $entry['itemPrice'] ."<br> Quantity Available: " .$entry['itemQuantity']?></div>
+                    <a class="card-footer text-end" href="#">Edit Listing</a>
+                </div>
+                
+                
             <?php endforeach?>
         </div>
 

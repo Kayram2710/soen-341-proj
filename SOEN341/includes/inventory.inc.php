@@ -11,6 +11,7 @@ if(isset($_SESSION['userID'])){
     $result = mysqli_query($conn, $sql);
     $listings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+
 }
 
 //when posted
