@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
 <body>
-    <div class="pan-container" id="container">
+    <div class="container" id="container">
       
       <!-- Sign Up Container DIV-->
       <div class="form-container sign-up-container">
