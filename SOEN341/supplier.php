@@ -2,11 +2,12 @@
 	include_once 'views/header.php';
     require_once 'includes/inventory.inc.php';
 
-    //guard to keep each role in their respective page
+    //Role Guard
     if(!isset($_SESSION['userRole']) || !($_SESSION['userRole'] == "supplier") ){
         header("location: ./index.php");
     }
 
+    $listings = $_SESSION['listings'];
 
 ?>
 
@@ -17,7 +18,7 @@
     <!-- List of listed products-->
         Here is a list of your listed products:<br>
         <?php 
-            if(isset($_GET['success'])){
+            if(isset($_GET['success']) && !(isset($hasErr))){
                 echo "<h5 style=\"color:MediumSeaGreen;\">New item succefuly added!</h5>";
             }
         ?>

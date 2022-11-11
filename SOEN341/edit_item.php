@@ -1,34 +1,40 @@
 <?php 
 
     include_once 'views/header.php';
+    require_once 'includes/inventory.inc.php';
 
     //Role Guard
     if(!isset($_SESSION['userRole']) || !($_SESSION['userRole'] == "supplier") ){
         header("location: ./index.php");
     }
     
+    //setting current index
     $current = 0;
+    $maxIndex = count($_SESSION['listings']);
 
     //index guard
-    if(isset($_GET['index']) && ($_GET['index']) < count($_SESSION['listings']) && ($_GET['index']) >= 0){
+    if(isset($_GET['index']) && (($_GET['index']) < $maxIndex) && ($_GET['index']) >= 0){
         $current = $_GET['index'];
     }
 
+    //creating item
     $item = $_SESSION['listings'][$current];
+
+    //prepare for update
+    $itemID = $item['itemID'];
+
     
-    if(isset($_POST['submit'])){
-
-        require "includes/listingForm.inc.php";
-
-        if(empty($titleErr) && empty($descErr) && empty($priceErr) && empty($quantErr)){
-
-            //update listing
-        }
-    }
 ?>
 
+<!-- FORM CREATION -->
 <section>
-    <h3><?php echo "Currently viewing: \"".$item["itemName"]."\""?></h3>
+
+    <h3><?php echo "Currently viewing listing #".($current+1).": \"".$item["itemName"]."\""?></h3>
+    <?php 
+        if(isset($_GET['success']) && !(isset($hasErr))){
+            echo "<h5 style=\"color:MediumSeaGreen;\">Listing Updated!</h5>";
+        }
+    ?>
 
     <form action="" class="rounded-4 border bg-white mt-2 px-4 py-2" method="POST">
         <div class="m-4 mt-6">
@@ -53,21 +59,25 @@
                 <div class="invalid-feedback"><?php echo $quantErr?> </div>
             </div>
         </div>
+        <input type="hidden" id="passed" name="itemID" value="<?php echo $itemID; ?>">
         <div class="m-4 mb-6">
             <button type="submit" name="submit" class="btn btn-success">Update</button>
+            <a name="delete" class="btn btn-danger">Delete</a>
         </div>
     </form>
 
+    <!-- INDEX NAVIGATION -->
     <div class="container">
         <div class="row mt-2 g-2">
-            <div class="col-2"><a href="edit_item.php?index=<?php echo $current-1;?>" type="button" class="btn btn-primary btn-sm">previous</a></div>
+            <div class="col-2"><a href="edit_item.php?index=<?php echo $current-1;?>" type="button" class="btn <?php echo ($current == 0)?"disabled":"";?> btn-primary btn-sm">previous</a></div>
             <div class="col-8"></div>
-            <div class="col-2"><a href="edit_item.php?index=<?php echo $current+1;?>" type="button" class="btn btn-primary btn-sm">next</a></div>
+            <div class="col-2"><a href="edit_item.php?index=<?php echo $current+1;?>" type="button" class="btn <?php echo ($current >= $maxIndex-1)?"disabled":"";?> btn-primary btn-sm">next</a></div>
         </div>
     </div>
 
-
 </section>
+
+
 <?php 
 	include_once 'views/footer.php';
 ?>
