@@ -3,21 +3,20 @@
 
 	//guard to keep each role in their respective page
 	if(isset($_SESSION['userRole'])){
-		if (($_SESSION['userRole']) == "supplier"){
+
+		$role = $_SESSION['userRole'];
+
+		if ($role == "supplier"){
 			header("location: ./supplier.php");
-		} elseif (($_SESSION['userRole']) == "client"){
+		} elseif ($_role == "client"){
 			header("location: ./client.php");	
 		}
+
+	} else {
+
+		header("location: ./home.php");
+		
 	}
-?>
 
-	<section>
-		<?php 
-			header("location: ./account.php");
-		?>
-	</section>
-
-
-<?php 
 	include_once 'views/footer.php'
 ?>
