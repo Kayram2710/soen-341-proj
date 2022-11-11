@@ -27,7 +27,7 @@
 ?>
 
 <!-- FORM CREATION -->
-<section>
+<div class="container-fluid" style="max-width: 800px">
 
     <h3><?php echo "Currently viewing listing #".($current+1).": \"".$item["itemName"]."\""?></h3>
     <?php 
@@ -67,15 +67,15 @@
     </form>
 
     <!-- INDEX NAVIGATION -->
-    <div class="container">
+    <div class="container-fluid">
         <div class="row mt-2 g-2">
-            <div class="col-2"><a href="edit_item.php?index=<?php echo $current-1;?>" type="button" class="btn <?php echo ($current == 0)?"disabled":"";?> btn-primary btn-sm">previous</a></div>
+            <div class="col-2"><a href="edit_item.php?index=<?php echo $current-1;?>" type="button" class="btn w-75 <?php echo ($current == 0)?"disabled":"";?> btn-primary btn-sm">previous</a></div>
             <div class="col-8"></div>
-            <div class="col-2"><a href="edit_item.php?index=<?php echo $current+1;?>" type="button" class="btn <?php echo ($current >= $maxIndex-1)?"disabled":"";?> btn-primary btn-sm">next</a></div>
+            <div class="col-2"><a href="edit_item.php?index=<?php echo $current+1;?>" type="button" class="btn w-75 <?php echo ($current >= $maxIndex-1)?"disabled":"";?> btn-primary btn-sm">next</a></div>
         </div>
     </div>
 
-</section>
+</div>
 
 
 <?php 

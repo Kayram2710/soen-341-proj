@@ -110,15 +110,7 @@ function loginUser($conn, $identifier, $pwd){
 		$_SESSION['userEmail'] = $emailTakenVar["email"];
 		$_SESSION['userRole'] = $emailTakenVar["role"];
 
-		//set default path to client.php
-		$path = "client.php";
-
-		//set path to supplier.php if that is the role of the user
-		if($_SESSION['userRole'] == "supplier"){
-			$path = "supplier.php";
-		}
-
-		header("location: ../$path");
+		header("location: ../index.php");
 		exit();
 	}
 }

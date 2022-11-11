@@ -5,9 +5,7 @@
 
 <link rel="stylesheet" href="./css/home.css">
 
-
 <body>
-
     <div class="col-md-12 blue-text text-center">
         <div class = "centered">
             <h3 class="display-3 font-weight-bold white-text mb-0 pt-md-5 pt-5">Procurement System</h3>
@@ -33,4 +31,6 @@
     </div>
 	
 </body>
+
+
 	
