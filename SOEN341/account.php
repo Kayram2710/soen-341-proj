@@ -99,7 +99,7 @@
             }
           ?>
           <!-- Log In Form-->
-          <input type="email" name="email" placeholder="Email" />
+          <input type="email" name="email" placeholder="Email"/>
           <input type="password" name="pwd" placeholder="Password" />
           <a href="#">Forgot Your Password?</a>
           <button type="submit" name="submit">Log In</button>

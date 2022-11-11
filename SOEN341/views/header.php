@@ -20,8 +20,8 @@
 			<ul class="navbar-nav">
 				<a class="navbar-brand" href="#"><img src="img/Owl.png" style="width:40px;" class="rounded-pill"></a>
 				<li><a href="index.php" class="nav-link">Home</a></li>
-				<li><a href="discover.php" class="nav-link">About Us</a></li>
-				<li><a href="blog.php" class="nav-link">Find Blog</a></li>
+				<li><a href="#" class="nav-link">About Us</a></li>
+				<li><a href="#" class="nav-link">Find Blog</a></li>
 				<?php 
 					if(isset($_SESSION['userID'])){
 							echo "<li><a href='includes/logout.inc.php' class='nav-link'>Log out</a></li>";

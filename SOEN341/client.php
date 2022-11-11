@@ -1,12 +1,13 @@
 <?php 
 	include_once 'views/header.php';
 
-	//guard to keep each role in their respective page
-	if(!isset($_SESSION['userRole'])){
+	if(!isset($_SESSION['userRole']) || !($_SESSION['userRole'] == "client") ){
         header("location: ./index.php");
-    } elseif (($_SESSION['userRole']) == "supplier"){
-        header("location: ./supplier.php");
     }
     
+?>
+
+<?php 
+	include_once 'views/footer.php';
 ?>
 
