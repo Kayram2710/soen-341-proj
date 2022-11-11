@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="./css/style.css" />
 
 <body>
-    <div class="container" id="container">
+    <div class="pan-container" id="container">
       
       <!-- Sign Up Container DIV-->
       <div class="form-container sign-up-container">
@@ -101,7 +101,7 @@
           <!-- Log In Form-->
           <input type="email" name="email" placeholder="Email"/>
           <input type="password" name="pwd" placeholder="Password" />
-          <a href="#">Forgot Your Password?</a>
+          <a-mod href="#">Forgot Your Password?</a-mod>
           <button type="submit" name="submit">Log In</button>
         </form>
       </div>

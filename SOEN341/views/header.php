@@ -19,7 +19,7 @@
 		<div class="container-fluid p-3">
 			<ul class="navbar-nav">
 				<a class="navbar-brand" href="#"><img src="img/Owl.png" style="width:40px;" class="rounded-pill"></a>
-				<li><a href="index.php" class="nav-link">Home</a></li>
+				<li><a href="home.php" class="nav-link">Home</a></li>
 				<li><a href="#" class="nav-link">About Us</a></li>
 				<li><a href="#" class="nav-link">Find Blog</a></li>
 				<?php 
