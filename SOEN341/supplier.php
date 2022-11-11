@@ -12,10 +12,10 @@
 ?>
 
 <section>
-    <h3><?php echo "Hello, " .  $_SESSION["userFName"] . "."; ?></h3>
-    <div class="container-fluid">
-        
-    <!-- List of listed products-->
+    <div class="container-fluid" style="max-width: 800px">
+
+        <h3><?php echo "Hello, " .  $_SESSION["userFName"] . "."; ?></h3>
+        <!-- List of listed products-->
         Here is a list of your listed products:<br>
         <?php 
             if(isset($_GET['success']) && !(isset($hasErr))){
@@ -48,8 +48,8 @@
 
         <!-- New Product Form-->
         <br> List new product:
-        <a class="ms-4 w-25 btn bg-info rounded-2 border-dark" data-bs-toggle="collapse" href="#openForm">Create Listing</a>
-        <div id="openForm" class="collapse" >
+        <a class="ms-4 w-25 btn bg-info rounded-2 border-dark " data-bs-toggle="collapse" href="#openForm">Create New Listing</a>
+        <div id="openForm" class="container-fluid collapse">
             <form action="" class="rounded-4 border bg-white mt-2 px-4 py-2" method="POST">
                 <div class="m-4 mt-6">
                     <label for="prodname" class="form-label">Listing Title:</label>

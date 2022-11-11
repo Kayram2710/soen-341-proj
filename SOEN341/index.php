@@ -8,7 +8,7 @@
 
 		if ($role == "supplier"){
 			header("location: ./supplier.php");
-		} elseif ($_role == "client"){
+		} elseif ($role == "client"){
 			header("location: ./client.php");	
 		}
 

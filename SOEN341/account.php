@@ -13,7 +13,7 @@
 
 ?>
 
-<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<link rel="stylesheet" type="text/css" href="./css/account.css" />
 
 <body>
     <div class="container" id="container">
@@ -80,7 +80,7 @@
       <!-- Log In Container DIV-->
       <div class="form-container sign-in-container">
         <form action="includes/login.inc.php" method="post">
-          <h1>Sign In</h1>
+          <h1>Log In</h1>
           
           <!-- Error checker-->
           <?php
