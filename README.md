@@ -1,7 +1,7 @@
 
 Team Members:
 
-Garila, Matei Razvan 40131709
+Matei Razvan Garila 40131709
 
 Meet Vora 40155271
 
