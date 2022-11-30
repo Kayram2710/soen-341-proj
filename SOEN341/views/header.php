@@ -22,7 +22,7 @@
 				<li><a href="home.php" class="nav-link">Home</a></li>
 				<li><a href="market.php" class="nav-link">Market</a></li>
 				<?php if(isset($_SESSION['userID'])):?>
-					<li><a href="#" class="nav-link">Account</a></li>
+					<li><a href="profile.php" class="nav-link">Account</a></li>
 					<li><a href='index.php' class='nav-link'>Personal Space</a></li>
 					<li><a href='includes/logout.inc.php' class='nav-link'>Log out</a></li>
 				<?php endif; if(!isset($_SESSION['userID'])): ?>
@@ -30,6 +30,11 @@
 					<li><a href='account.php' class='nav-link'>Log in</a></li>
 					<li><a href='account.php?error=!' class='nav-link'>Sign up</a></li>
 				<?php endif;?>
+
+				<form action="search.php" method="POST">
+					<input type="text" name="search" placeholder="Search user...">
+					<button type="submit" name="submit-search">Search</button>
+				</form>
 			</ul>
 		</div>
 			
