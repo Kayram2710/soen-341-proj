@@ -10,6 +10,16 @@ function emptyInputSignup($fName, $lName, $email, $pwd, $pwdRepeat){
 	return $result;
 }
 
+// function emptyInputUpdate($fName, $lName){
+// 	$result = false;
+// 	if(empty($fName) || empty($lName)){
+// 		$result = true;
+// 	}else{
+// 		$result = false;
+// 	}
+// 	return $result;
+// }
+
 function invalidEmail($email){
 	$result = false;
 	if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
@@ -75,6 +85,24 @@ function createUser($conn, $fName, $lName, $email, $role, $pwd){
 	header("location: ../account.php?error=none");
 	exit();
 }
+
+// function updateUser($conn, $fName, $lName, $userID){
+
+// 	$sql = "UPDATE user SET fName = ?, lName = ? WHERE userID = ?;";
+// 	$stmt = mysqli_stmt_init($conn);
+
+// 	if(!mysqli_stmt_prepare($stmt, $sql)){
+// 		header("location: ../profile.php?error=stmtfailed");
+// 		exit();
+// 	}
+
+// 	mysqli_stmt_bind_param($stmt, 'ssi', $fName, $lName, $userID);
+// 	mysqli_stmt_execute($stmt);
+// 	mysqli_stmt_close($stmt);
+
+// 	header("location: ../profile.php?success=updateSuc");
+// 	exit();
+// }
 
 function emptyInputLogin($email, $pwd){
 	$result = false;
