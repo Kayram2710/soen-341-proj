@@ -5,6 +5,11 @@
 ?>
 
 <body>
+
+	<form action="search.php" method="POST">
+		<input type="text" name="search" placeholder="Search user...">
+		<button type="submit" name="submit-search">Search</button>
+	</form>
 	
 	<?php
 		$sql = "SELECT * FROM user WHERE userID = {$_SESSION['userID']};";
@@ -26,16 +31,18 @@
 				echo "<p> Your email: " . $row['email'] . "</p><br>";
 				echo "<p> Your role: " . $row['role'] . "</p><br>";
 			}
+			
+			echo "<div>";
+			echo '<a href="profileUpdate.php?updateID='.$_SESSION['userID'].'">Update your account</a><br>';
+			echo '<a href="profilePasswordUpdate.php?updateID='.$_SESSION['userID'].'">Update your password</a>';
+			echo "</div>";
+
 			echo "</div><br><br><br>";
 		}else{
 			echo "<p> There was an error fetching your data! </p>";
 		}
 		echo "</div><br><br>";
 
-		// echo "<div>";
-		// echo '<a href="profileUpdate.php?updateID='.$_SESSION['userID'].'">Update your account</a><br>';
-		// echo '<a href="profilePasswordUpdate.php?updateID='.$_SESSION['userID'].'">Update your password</a>';
-		// echo "</div>";
 	?>
 
 	<?php
