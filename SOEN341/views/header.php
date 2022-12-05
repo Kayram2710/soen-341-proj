@@ -30,11 +30,6 @@
 					<li><a href='account.php' class='nav-link'>Log in</a></li>
 					<li><a href='account.php?error=!' class='nav-link'>Sign up</a></li>
 				<?php endif;?>
-
-				<form action="search.php" method="POST">
-					<input type="text" name="search" placeholder="Search user...">
-					<button type="submit" name="submit-search">Search</button>
-				</form>
 			</ul>
 		</div>
 			
