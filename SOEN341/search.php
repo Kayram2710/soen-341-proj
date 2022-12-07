@@ -1,7 +1,7 @@
 <?php 
 	include_once 'views/header.php';
-	include_once 'includes/dbh.inc.php';
-	include_once 'includes/functions.inc.php';
+	require_once 'includes/dbh.inc.php';
+	require_once 'includes/functions.inc.php';
 ?>
 
 <h1>Search results</h1>
