@@ -16,10 +16,18 @@
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
 
-		// if($_GET['success'] == 'updateSuc'){
-		// 	echo "<p>Update successful!</p>";
-        // 	echo "<script type=\"text/javascript\"> container.classList.add(\"right-panel-active\"); </script>";
-		// }
+		if(isset($_GET['error'])){
+
+			if($_GET['success'] == 'updateSuc'){
+			echo "<p>Update successful!</p>";
+	        echo "<script type=\"text/javascript\"> container.classList.add(\"right-panel-active\"); </script>";
+			}
+
+			
+
+		}
+
+		
 
 		echo "<Div>";
 		echo "<h3>Your information</h3>";

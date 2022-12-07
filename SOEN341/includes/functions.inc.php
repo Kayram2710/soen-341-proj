@@ -10,15 +10,15 @@ function emptyInputSignup($fName, $lName, $email, $pwd, $pwdRepeat){
 	return $result;
 }
 
-// function emptyInputUpdate($fName, $lName){
-// 	$result = false;
-// 	if(empty($fName) || empty($lName)){
-// 		$result = true;
-// 	}else{
-// 		$result = false;
-// 	}
-// 	return $result;
-// }
+function emptyInputUpdate($fName, $lName){
+	$result = false;
+	if(empty($fName) || empty($lName)){
+		$result = true;
+	}else{
+		$result = false;
+	}
+	return $result;
+}
 
 function invalidEmail($email){
 	$result = false;
@@ -86,23 +86,18 @@ function createUser($conn, $fName, $lName, $email, $role, $pwd){
 	exit();
 }
 
-// function updateUser($conn, $fName, $lName, $userID){
+function updateUser($conn, $fName, $lName, $userID){
 
-// 	$sql = "UPDATE user SET fName = ?, lName = ? WHERE userID = ?;";
-// 	$stmt = mysqli_stmt_init($conn);
+	$sql = "UPDATE user SET fName = '$fName', lName = '$lName' WHERE userID = '$userID';";
 
-// 	if(!mysqli_stmt_prepare($stmt, $sql)){
-// 		header("location: ../profile.php?error=stmtfailed");
-// 		exit();
-// 	}
+	mysqli_query($conn, $sql);
 
-// 	mysqli_stmt_bind_param($stmt, 'ssi', $fName, $lName, $userID);
-// 	mysqli_stmt_execute($stmt);
-// 	mysqli_stmt_close($stmt);
+	$_SESSION['userFName'] = $fName;
+	$_SESSION['userLName'] = $lName;
 
-// 	header("location: ../profile.php?success=updateSuc");
-// 	exit();
-// }
+	header("location: ../profile.php?success=updateDataSuc");
+	exit();
+}
 
 function emptyInputLogin($email, $pwd){
 	$result = false;
@@ -159,6 +154,49 @@ function addRelationship($conn, $firstID, $secondID){
 
 	header("location: ../profile.php?error=none");
 	exit();
+}
+
+function emptyInputPWD($oldPWD, $newPWD, $confirmPWD){
+	$result = false;
+	if(empty($oldPWD) || empty($newPWD) || empty($confirmPWD)){
+		$result = true;
+	}else{
+		$result = false;
+	}
+	return $result;
+}
+
+function oldPWDNoMatch($conn, $oldPWD, $userID){
+	$result = true;
+
+	$sql = "SELECT * FROM user WHERE userID = '$userID';";
+
+	$queryResult = mysqli_query($conn, $sql);
+
+	$row = mysqli_fetch_assoc($queryResult);
+
+	$pwdHashed = $row["password"];
+
+	$checkpwd = password_verify($oldPWD, $pwdHashed);
+
+	if($checkpwd === true){
+		$result = false;
+	}
+
+	return $result;
+}
+
+function updatePWD($conn, $pwd, $userID){
+
+	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+	$sql = "UPDATE user SET password = '$hashedPwd' WHERE userID = '$userID';";
+
+	mysqli_query($conn, $sql);
+
+	header("location: ../profile.php?success=updatePWDSuc");
+	exit();
+
 }
 
 ?>
