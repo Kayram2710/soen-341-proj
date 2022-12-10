@@ -20,6 +20,58 @@
             addItem($conn,$id);
         }
 
+        if(!empty($_POST['total']) && $_POST['total'] > 0){
+            $orderID = $_SESSION['orderID'];
+            processOrder($conn,$orderID);
+        }
+
+    }
+
+    function processOrder($conn,$orderID){
+
+        $order = getOrderInfo($conn,$orderID);
+
+        $status = $order[0]["status"];
+        $total = $order[0]["total"];
+        $result = "";
+
+        if($total < 5000){
+            $status = 2;
+            $approval = 1;
+            $result = "success";
+        }elseif($total >= 5000){
+            $status = 1;
+            $approval = 0;
+            $result = "approval";
+        }
+
+        setStatuses($conn,$orderID,$status,$approval);
+        createOrder($conn);
+        updateSession($conn);
+
+        header("location: ./client.php?status=".$result);
+
+    }
+
+    function setStatuses($conn,$orderID,$status,$approval){
+
+        $sql = "UPDATE orders SET approval = '$approval' WHERE orderID = '$orderID'";
+        mysqli_query($conn, $sql);
+
+        $sql = "UPDATE orders SET status = '$status' WHERE orderID = '$orderID'";
+        mysqli_query($conn, $sql);
+        
+        updateSession($conn);
+    }
+
+    function getOrderInfo($conn,$orderID){
+
+        $sql = "SELECT * FROM orders WHERE orderID = '$orderID'";
+
+        $result = mysqli_query($conn, $sql);
+        $order = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        return $order;
     }
 
     function addItem($conn,$itemID){

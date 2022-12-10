@@ -62,7 +62,7 @@
         <input type="hidden" id="passed" name="itemID" value="<?php echo $itemID; ?>">
         <div class="m-4 mb-6">
             <button type="submit" name="submit" class="btn btn-success">Update</button>
-            <a name="delete" class="btn btn-danger">Delete</a>
+            <a name="delete"  href="edit_item.php?delete=1&index=<?php echo $current;?>" class="btn btn-danger">Delete</a>
         </div>
     </form>
 

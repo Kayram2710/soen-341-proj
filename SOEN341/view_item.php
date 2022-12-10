@@ -51,7 +51,6 @@
                 <div class="invalid-feedback"><?php echo $quantErr?> </div>
             </div>
         </div>
-        <!-- TO EDIT -->
         <input type="hidden" id="passed" name="itemID" value="<?php echo $item['itemID']; ?>">
         <div class="m-4 mb-6">
             <?php if(isset($_SESSION["userRole"]) && ($_SESSION["userRole"]=="client") && ($item['itemQuantity']>0)):?>
