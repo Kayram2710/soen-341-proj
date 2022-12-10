@@ -2,8 +2,8 @@
 
     require_once 'dbh.inc.php';
 
-    if(!isset($_SESSION['orderID'])){
-        createOrder($conn);
+    if(isset($_SESSION['userID'])){
+       updateSession($conn);
     }
 
     //when session is set
@@ -54,16 +54,23 @@
         //retrieve order
         $result = mysqli_query($conn, $sql);
         $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        
+        if($orders == null){
 
-        $_SESSION['orders'] = $orders;
+            createOrder($conn);
 
-        //count amount of orders
-        $orderAmt = count($_SESSION['orders']);
+        }else{
 
-        //fetch most recent order ID
-        $orderID = $orders[$orderAmt-1]["orderID"];
+            $_SESSION['orders'] = $orders;
 
-        $_SESSION['orderID'] = $orderID;
+            //count amount of orders
+            $orderAmt = count($_SESSION['orders']);
+
+            //fetch most recent order ID
+            $orderID = $orders[$orderAmt-1]["orderID"];
+
+            $_SESSION['orderID'] = $orderID;
+        }
     }
 
     function getOrder($conn,$orderID){

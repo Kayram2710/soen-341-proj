@@ -2,6 +2,16 @@
 
     require_once 'dbh.inc.php';
 
+    if(isset($_POST['submit'])){
+
+        //validate item ID
+        if(!empty($_POST['itemID'])){
+            $id = $_POST['itemID'];
+            addItem($conn,$id);
+        }
+
+    }
+
     function displayCart(){
 
         $cart = $_SESSION['cart'];

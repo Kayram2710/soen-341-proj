@@ -15,11 +15,11 @@
 ?>
 
 <section>
-    <div class="container-fluid" style="max-width: 800px">
+    <div class="container-fluid" style="max-width: 800px" method="POST">
 
         <h3><?php echo "Hello, " .  $_SESSION["userFName"] . "."; ?></h3>
 
-		<div class="container-fluid mt-4 p-4 bg-white rounded-2 border">
+		<form class="container-fluid mt-4 p-4 bg-white rounded-2 border">
 			<h4> Cart </h4>
             <?php if(empty($cart)): ?>
                 <div class="card">
@@ -42,9 +42,10 @@
             <?php $total += $price;endforeach; setTotal($conn,$total);?>
 
 			<h5> Cart Total: $<?php echo $total?></h5>
-			
+			<button type="submit" name="submit" class="btn btn-primary">Place Order</button>
 
-		</div>
+
+		</form>
 
        <!-- Display loop-->
 	   <div class="container-fluid mt-4 p-4 bg-white rounded-2 border">
@@ -60,8 +61,8 @@
             <?php endif; $index = 0; foreach($orders as $entry): ?>
                 
                 <div class="card bg-light mb-2">
-                    <h5 class="card-header">Order: <?php echo $index+1; $index++?></h5>
-                    <div class="card-body">Total: $<?php echo $entry['total'] ?></div>
+                    <h5 class="card-header">Order: <?php //echo $index+1; $index++?></h5>
+                    <div class="card-body">Total: $<?php //echo $entry['total'] ?></div>
                 </div>
                 
             <?php endforeach?>
