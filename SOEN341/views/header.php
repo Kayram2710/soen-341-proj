@@ -22,8 +22,9 @@
 				<li><a href="home.php" class="nav-link">Home</a></li>
 				<li><a href="market.php" class="nav-link">Market</a></li>
 				<?php if(isset($_SESSION['userID'])):?>
+					<li><a href='index.php' class='nav-link'>Main Page</a></li>
+					<li><a href='inbox.php' class='nav-link'>Inbox</a></li>
 					<li><a href="profile.php" class="nav-link">Account</a></li>
-					<li><a href='index.php' class='nav-link'>Personal Space</a></li>
 					<li><a href='includes/logout.inc.php' class='nav-link'>Log out</a></li>
 				<?php endif; if(!isset($_SESSION['userID'])): ?>
 					<li><a href="account.php" class="nav-link">Account</a></li>

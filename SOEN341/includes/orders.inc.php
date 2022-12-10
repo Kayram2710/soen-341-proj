@@ -138,11 +138,23 @@
     function setTotal($conn,$total){
         //fetch user ID
         $orderID = $_SESSION['orderID'];
-        $sql = "UPDATE orders SET total = '$total' WHERE orderID = '$orderID';";
+        $sql = "UPDATE orders SET total = '$total' WHERE orderID = '$orderID'";
 
         //make sql query
         mysqli_query($conn, $sql);
 
         updateSession($conn);
+    }
+
+    function deleteOrder($conn,$orderID){
+
+        $sql = "DELETE FROM orderlist WHERE orderID = '$orderID'";
+        mysqli_query($conn, $sql);
+
+        $sql = "DELETE FROM orders WHERE orderID = '$orderID'";
+        mysqli_query($conn, $sql);
+
+        updateSession($conn);
+    
     }
 ?>
