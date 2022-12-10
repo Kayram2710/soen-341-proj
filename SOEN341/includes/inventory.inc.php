@@ -4,9 +4,7 @@ require_once 'dbh.inc.php';
 
 //when session is set
 if(isset($_SESSION['userID'])){
-    
     updateListing($conn);
-
 }
 
 //when posted
@@ -63,10 +61,10 @@ if(isset($_POST['submit'])){
         //test to see which sql function to create
         if(!isset($id)){
             $sql = "INSERT INTO inventory (itemName, itemDesc, itemPrice, itemQuantity, itemOwnerID) VALUES ('$title', '$description', '$price', '$quantity', '$userID')";
-            $path = "supplier";
+            $path = "supplier.php?success=true";
         } elseif(isset($id)){
             $sql = "UPDATE inventory SET itemName='$title', itemDesc='$description', itemPrice='$price', itemQuantity='$quantity' WHERE itemID=$id";
-            $path = "edit_item";
+            $path = "edit_item.php?success=true&index=".$_GET['index'];
         }
 
         manageInventory($conn, $sql,$path);
@@ -81,7 +79,7 @@ if(isset($_POST['submit'])){
 function manageInventory($conn, $sql,$path){
 
     if(mysqli_query($conn, $sql)){
-        header("location: ./".$path.".php?success=true");
+        header("location: ./".$path);
     } else {
         echo 'Error ' . mysqli_error($conn); 
     }
@@ -98,6 +96,15 @@ function updateListing($conn){
     $listings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     $_SESSION['listings'] = $listings;
+}
+
+function deleteListing($conn,$itemID){
+    $sql = "DELETE FROM 'inventory' WHERE 'inventory'.'itemID' = $itemID";
+
+    //retrieve array of lists
+    mysqli_query($conn, $sql);
+    updateListing($conn);
+
 }
 
 ?>

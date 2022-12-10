@@ -8,6 +8,7 @@
     $result = mysqli_query($conn, $sql);
     $listings = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+    $_SESSION['market'] = $listings;
 
 ?>
 
@@ -32,7 +33,7 @@
                             <h5 class="card-header"><?php echo $entry['itemName'] ?></h5>
                             <div class="card-body"><?php echo $entry['itemDesc'] ?></div>
                             <div class="card-body"><?php echo "Price :$" . $entry['itemPrice'] ."<br> Quantity Available: " .$entry['itemQuantity']?></div>
-                            <a class="card-footer text-end" href="#">View</a>
+                            <a class="card-footer text-end" href="view_item.php?index=<?php echo $index; $index++?>">View</a>
                         </div>
                     </div>
                 <?php endforeach?>
