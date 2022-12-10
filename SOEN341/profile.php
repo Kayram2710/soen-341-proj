@@ -23,11 +23,7 @@
 	        echo "<script type=\"text/javascript\"> container.classList.add(\"right-panel-active\"); </script>";
 			}
 
-			
-
 		}
-
-		
 
 		echo "<Div>";
 		echo "<h3>Your information</h3>";
@@ -89,29 +85,6 @@
 				echo "<p> Their First Name: " . $row['fName'] . "</p>";
 				echo "<p> Their Last Name: " . $row['lName'] . "</p>";
 				echo "<p> Their email: " . $row['email'] . "</p> <br>";
-			}
-		}else{
-			echo "<p> The query returned an empty result set (i.e. zero rows)! </p>";
-		}
-		echo "</div><br><br>";
-
-	?>
-
-	<?php
-		$sql = "SELECT `user`.`userID`, `user`.`fName`, `user`.`lName`, `user`.`email`, `orders`.`orderID`, `orders`.`total` FROM `user` INNER JOIN `orders` ON `user`.`userID` = `orders`.`orderPlacerID` WHERE `user`.`userID` = {$_SESSION['userID']};";
-		$result = mysqli_query($conn, $sql);
-		$resultCheck = mysqli_num_rows($result);
-
-
-		echo "<Div>";
-		echo "<h3>Your Orders</h3>";
-		if($resultCheck > 0){
-			
-			while($row = mysqli_fetch_assoc($result)){
-				echo "<p> Your First Name: " . $row['fName'] . "</p>";
-				echo "<p> Your Last Name: " . $row['lName'] . "</p>";
-				echo "<p> Your email: " . $row['email'] . "</p>";
-				echo "<p> Your email: " . $row['total'] . "</p>";
 			}
 		}else{
 			echo "<p> The query returned an empty result set (i.e. zero rows)! </p>";

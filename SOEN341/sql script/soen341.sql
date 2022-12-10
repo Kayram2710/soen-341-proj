@@ -36,6 +36,8 @@ CREATE TABLE `inventory` (
   `itemOwnerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+
 -- --------------------------------------------------------
 
 --
@@ -58,7 +60,9 @@ CREATE TABLE `orderlist` (
 CREATE TABLE `orders` (
   `orderID` int(11) NOT NULL,
   `orderPlacerID` int(11) NOT NULL,
-  `total` double NOT NULL
+  `total` double NOT NULL,
+  `status` INT(11) NOT NULL DEFAULT '0',
+  `approval` INT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
