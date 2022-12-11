@@ -4,7 +4,9 @@
 
 ?>
 
-<body>
+<body style="background-image: url('./img/sb.jpg');
+  background-repeat: no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+<div style="padding:2%">
 
 	<form action="search.php" method="POST">
 		<input type="text" name="search" placeholder="Search user...">
@@ -92,7 +94,8 @@
 		echo "</div><br><br>";
 
 	?>
-
+</div>
+	
 </body>
 
 <?php
