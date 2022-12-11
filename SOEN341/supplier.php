@@ -11,10 +11,16 @@
 
 ?>
 
-<section>
-    <div class="container-fluid" style="max-width: 800px">
 
-        <h3><?php echo "Hello, " .  $_SESSION["userFName"] . "."; ?></h3>
+  
+
+
+<body style="background-image: url('./img/sb.jpg');
+  background-repeat: no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+       
+	   <div style="padding:10%">
+           
+	 <h3><?php echo "Hello, " .  $_SESSION["userFName"] . "."; ?></h3>
         <!-- List of listed products-->
         Here is a list of your listed products:<br>
         <?php 
@@ -24,31 +30,65 @@
         ?>
 
         <!-- Display loop-->
-        <div class="container-fluid mt-4 p-4 bg-white rounded-2 border">
+        
             <?php if(empty($listings)): ?>
                 <div class="card">
                     <div class="card-body bg-light text-black-50">No Listings Yet...</div>
                 </div>
                 <div class="card">
                     <a class="card-body bg-light" data-bs-toggle="collapse" href="#openForm">+ Add A Listing</a>
-                </div>
+               
                 
-            <?php endif; $index = 0; foreach($listings as $entry): ?>
-                
-                <div class="card bg-light mb-2">
-                    <h5 class="card-header"><?php echo $entry['itemName'] ?></h5>
-                    <div class="card-body"><?php echo $entry['itemDesc'] ?></div>
-                    <div class="card-body"><?php echo "Price :$" . $entry['itemPrice'] ."<br> Quantity Available: " .$entry['itemQuantity']?></div>
-                    <a class="card-footer text-end" href="edit_item.php?index=<?php echo $index; $index++?>">Edit Listing</a>
-                </div>
-                
-                
-            <?php endforeach?>
+            <?php endif;?>
+
+
+<?php if(!empty($listings)): ?>
+
+  <div class="container mt-3 p-2">
+               
+
+         <table class="table table-hover">
+            
+            <thead>
+                <tr>
+                 
+                  <th>Product</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Action</th>
+               
+                </tr>
+
+           </thead>
+
+           <tbody>
+            
+ <?php $index = 0; foreach($listings as $entry): ?>
+
+              <tr class="p-2">
+                  <td><?php echo $entry['itemName'] ?></td>
+                  <td><?php echo $entry['itemDesc'] ?></td>
+                  <td><?php echo "$" . $entry['itemPrice'] ?></td>
+                  <td><?php echo $entry['itemQuantity'] ?></td>
+                  <td><a class="text-secondary fw-bold  " href="edit_item.php?index=<?php echo $index; $index++?>">Edit</a><td>
+             </tr>
+
+  
+          
+ <?php endforeach?>
+     
+          </tbody>
+  </table>
+
+        
         </div>
 
+<?php endif;?>
+
         <!-- New Product Form-->
-        <br> List new product:
-        <a class="ms-4 w-25 btn bg-info rounded-2 border-dark " data-bs-toggle="collapse" href="#openForm">Create New Listing</a>
+
+       <a class="my-2 mx-4 btn btn-outline-primary " data-bs-toggle="collapse" href="#openForm">Create New Listing</a>
         <div id="openForm" class="container-fluid collapse">
             <form action="" class="rounded-4 border bg-white mt-2 px-4 py-2" method="POST">
                 <div class="m-4 mt-6">
@@ -80,11 +120,50 @@
         </div>
 
 
-    </div>
+ 
 
-</section>
+
+
 
 <?php 
 	include_once 'views/footer.php';
 ?>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+		</div>
+
+    </div>
+	
+</body>
+
+
+	

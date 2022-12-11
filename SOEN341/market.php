@@ -12,8 +12,12 @@
 
 ?>
 
-<section>
-    <div class="container-fluid" style="max-width: 800px">
+<body style="background-image: url('./img/sb.jpg'); 
+  background-repeat: no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+       
+	   <div style="padding:10%">
+
+
 
         <h2>Welcome to the Market</h2>
 
@@ -26,26 +30,57 @@
                 </div>
                 
             <?php endif;?>
+
             <div class="row">
-                <?php $index = 0; foreach($listings as $entry): ?>
-                    <div class="col-4 mt-4">
-                        <div class="card bg-light mb-2">
-                            <h5 class="card-header"><?php echo $entry['itemName'] ?></h5>
-                            <div class="card-body"><?php echo $entry['itemDesc'] ?></div>
-                            <div class="card-body"><?php echo "Price :$" . $entry['itemPrice'] ."<br> Quantity Available: " .$entry['itemQuantity']?></div>
-                            <a class="card-footer text-end" href="view_item.php?index=<?php echo $index; $index++?>">View</a>
-                        </div>
-                    </div>
-                <?php endforeach?>
+
+ <div class="container mt-3">
+               
+
+         <table class="table table-hover">
+            
+            <thead>
+                <tr>
+                 
+                  <th>Product</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Action</th>
+               
+                </tr>
+
+           </thead>
+
+        <tbody>
+             <?php $index = 0; foreach($listings as $entry): ?>
+
+              <tr>
+                  <td><?php echo $entry['itemName'] ?></td>
+                  <td><?php echo $entry['itemDesc'] ?></td>
+                  <td><?php echo "$" . $entry['itemPrice'] ?></td>
+                  <td><?php echo $entry['itemQuantity'] ?></td>
+                  <td><a class="card-footer text-end" href="view_item.php?index=<?php echo $index; $index++?>">View</a></td>
+             </tr>
+
+  
+            <?php endforeach?>
+     
+          </tbody>
+  </table>
+             
+                           
+                
             </div>
         </div>
 
 
-    </div>
-
-</section>
 
 <?php 
 	include_once 'views/footer.php';
 ?>
+
+    </div>
+	
+</body>
+
 

@@ -19,7 +19,11 @@
 ?>
 
 <!-- FORM CREATION -->
-<div class="container-fluid" style="max-width: 800px">
+
+<body style="background-image: url('./img/sb.jpg'); 
+  background-repeat: no-repeat; background-size: 100% 100%; background-attachment: fixed;">
+       
+	   <div style="padding:10%">
 
     <h3><?php echo "Currently viewing listing #".($current+1).": \"".$item["itemName"]."\""?></h3>
     <?php 
@@ -68,8 +72,8 @@
         </div>
     </div>
 
-</div>
 
+</div>
 
 <?php 
 	include_once 'views/footer.php';
@@ -77,4 +81,7 @@
 
 
 
+    </div>
+	
+</body>
 
